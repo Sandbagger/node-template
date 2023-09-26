@@ -1,4 +1,4 @@
-# node-typescript-boilerplate
+# Express-typescript-boilerplate
 
 [![Sponsor][sponsor-badge]][sponsor]
 [![TypeScript version][ts-badge]][typescript-5-1]
@@ -6,12 +6,12 @@
 [![APLv2][license-badge]][license]
 [![Build Status - GitHub Actions][gha-badge]][gha-ci]
 
-👩🏻‍💻 Developer Ready: A comprehensive template. Works out of the box for most [Node.js][nodejs] projects.
+👩🏻‍💻 Personalised Express template: Using [node-typescript-boilerplate][node-typescript-boilerplate] as the starting point, I added [Express][Express] and implemented an opinionated folder structure inspired by [codemzy][codemzy].
 
 🏃🏽 Instant Value: All basic tools included and configured:
 
 - [TypeScript][typescript] [5.1][typescript-5-1]
-- [ESM][esm]
+- ~~[ESM][esm]~~
 - [ESLint][eslint] with some initial rules recommendation
 - [Jest][jest] for fast unit testing and code coverage
 - Type definitions for Node.js and Jest
@@ -21,26 +21,13 @@
 - Reproducible environments thanks to [Volta][volta]
 - Example configuration for [GitHub Actions][gh-actions]
 - Simple example of TypeScript code and unit test
+- [Express][express] Fast, unopinionated, minimalist web framework for Node.js
 
 🤲 Free as in speech: available under the APLv2 license.
 
 ## Getting Started
 
 This project is intended to be used with the latest Active LTS release of [Node.js][nodejs].
-
-### Use as a repository template
-
-To start, just click the **[Use template][repo-template-action]** link (or the green button). Start adding your code in the `src` and unit tests in the `__tests__` directories.
-
-### Clone repository
-
-To clone the repository, use the following commands:
-
-```sh
-git clone https://github.com/jsynowiec/node-typescript-boilerplate
-cd node-typescript-boilerplate
-npm install
-```
 
 ### Download latest release
 
@@ -72,15 +59,13 @@ I recommend to [install][volta-getting-started] Volta and use it to manage your 
 
 ### ES Modules
 
-This template uses native [ESM][esm]. Make sure to read [this][nodejs-esm], and [this][ts47-esm] first.
+~~This template uses native [ESM][esm]. Make sure to read [this][nodejs-esm], and [this][ts47-esm] first.~~
 
-If your project requires CommonJS, you will have to [convert to ESM][sindresorhus-esm].
-
-Please do not open issues for questions regarding CommonJS or ESM on this repo.
+For now, this project uses CommonJS, until I have the time to debug [ESM][esm] compatability with Jest.
 
 ## Backers & Sponsors
 
-Support this project by becoming a [sponsor][sponsor].
+Support the original project by becoming a [sponsor][sponsor].
 
 ## License
 
@@ -111,3 +96,7 @@ Licensed under the APLv2. See the [LICENSE](https://github.com/jsynowiec/node-ty
 [nodejs-esm]: https://nodejs.org/docs/latest-v16.x/api/esm.html
 [ts47-esm]: https://devblogs.microsoft.com/typescript/announcing-typescript-5-1/#esm-nodejs
 [editorconfig]: https://editorconfig.org
+[express]: https://expressjs.com/
+
+[typescript-boilerplate]https://github.com/jsynowiec/node-typescript-boilerplate
+[codemzy]https://www.codemzy.com/blog/nodejs-file-folder-structure
