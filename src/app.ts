@@ -1,5 +1,6 @@
-const express = require('express');
-const indexRoutes = require('./index/index.routes.js')
+import express from 'express';
+import indexRoutes from './index/index.routes.mjs';
+
 
 const app = express();
 

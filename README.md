@@ -11,7 +11,7 @@
 🏃🏽 Instant Value: All basic tools included and configured:
 
 - [TypeScript][typescript] [5.1][typescript-5-1]
-- ~~[ESM][esm]~~
+- [ESM][esm]
 - [ESLint][eslint] with some initial rules recommendation
 - [Jest][jest] for fast unit testing and code coverage
 - Type definitions for Node.js and Jest
@@ -59,9 +59,7 @@ I recommend to [install][volta-getting-started] Volta and use it to manage your 
 
 ### ES Modules
 
-~~This template uses native [ESM][esm]. Make sure to read [this][nodejs-esm], and [this][ts47-esm] first.~~
-
-For now, this project uses CommonJS, until I have the time to debug [ESM][esm] compatability with Jest.
+This template uses native [ESM][esm]. Make sure to read [this][nodejs-esm], and [this][ts47-esm] first.
 
 ## Backers & Sponsors
 

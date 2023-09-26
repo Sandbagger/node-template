@@ -17,6 +17,9 @@
     "noUnusedParameters": true,
     "noImplicitAny": false,
     "noImplicitThis": false,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    // solves an error with importing express
+    //  TypeError: Cannot read properties of undefined (reading 'Router')
+    "esModuleInterop": true,
   }
 }
