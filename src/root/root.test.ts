@@ -1,11 +1,19 @@
-import request from 'supertest';
-import express from 'express';
-import indexRoutes from './index.routes.js';
+import app from '../app.js'
+import * as db from '../../db/dbTest.js'
+import request from 'supertest'
 
-const app = express();
-app.use("/", indexRoutes);
+describe('/', () => {
+  beforeAll(async () => {
+    await db.connect()
+  });
+  afterEach(async () => {
+    await db.clearDatabase()
+  });
+  afterAll(async () => {
+    await db.closeDatabase()
+  });
 
-describe('Index Route', () => {
+
   it('GET should return status 200 and the expected response', async () => {
     const response = await request(app).get('/');
     expect(response.status).toBe(200);
@@ -23,6 +31,6 @@ describe('Index Route', () => {
       .send(payload)
       .set('Content-Type', 'application/json');
 
-    expect(response.request.body).toEqual("<h1>Hello World!<h1>");
+    expect(response.text).toEqual('posted');
   })
 });

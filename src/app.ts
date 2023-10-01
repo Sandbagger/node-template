@@ -1,12 +1,17 @@
-import express from 'express';
-import indexRoutes from './index/index.routes.mjs';
+import 'dotenv/config'
+import express, { Application } from 'express';
+import Database from '../db/db.js';
+import rootRoutes from './root/root.routes.js';
+import tasksRoutes from './tasks/tasks.routes.js';
 
+['DEV', 'PRODUCTION'].some(env => process.env.NODE_ENV === env) && Database.getInstance()
 
-const app = express();
+const app: Application = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use("/", rootRoutes);
+app.use("/tasks", tasksRoutes);
 
-app.use("/", indexRoutes);
+export default app;
 
-app.listen(4000, (): void => {
-  console.log('Server is listening on port 4000');
-});
 
