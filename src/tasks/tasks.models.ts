@@ -1,5 +1,10 @@
 import { Schema, model } from 'mongoose';
 
+export interface TaskDocument {
+    title: string;
+    description?: string;
+}
+
 const taskSchema = new Schema({
     title: {
         type: String,
@@ -12,4 +17,4 @@ const taskSchema = new Schema({
     },
 })
 
-export default model('Task', taskSchema);
+export default model<TaskDocument>('Task', taskSchema);

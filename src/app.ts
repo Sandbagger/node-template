@@ -9,8 +9,8 @@ import tasksRoutes from './tasks/tasks.routes.js';
 const app: Application = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use("/", tasksRoutes);
 app.use("/", rootRoutes);
-app.use("/tasks", tasksRoutes);
 
 export default app;
 

@@ -23,8 +23,8 @@ describe('Tasks', () => {
     });
   });
 
-  describe('Insert task without a title', () => {
-    test('validation error is thrown', async () => {
+  describe('Insert task without a required title', () => {
+    test('throws a validation error', async () => {
       const task = new Task({description: 'some description'}).validate();
       await expect(task).rejects.toThrow("Task validation failed: title: Path `title` is required.");
     })

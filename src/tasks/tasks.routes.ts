@@ -2,9 +2,9 @@ import express from 'express';
 import { get, post } from './tasks.controller.js';
 
 
-const indexRoutes = express.Router();
+const taskRoutes = express.Router();
 
-indexRoutes.get('/tasks', get);
-indexRoutes.post('/tasks', post);
+taskRoutes.get('/tasks', get);
+taskRoutes.post('/tasks', post);
 
-export default indexRoutes;
+export default taskRoutes;
