@@ -5,7 +5,6 @@ const mongod = MongoMemoryServer.create();
 
 export const connect = async (): Promise<void> => {
    const uri = await (await mongod).getUri();
-   console.log('uri', uri)
    await mongoose.connect(uri);
 }
 export const closeDatabase = async (): Promise<void> => {
