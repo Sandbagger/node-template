@@ -20,7 +20,6 @@ try {
   } catch (error) {
     res.status(400).send(error);
   }
-    
 
 }
 
@@ -35,4 +34,27 @@ export async function post(req: Request, res: Response): Promise<void> {
   } catch (error) {
     res.status(400).send(error);
   }
+}
+
+export async function patch(req: Request, res: Response): Promise<void> {
+
+  try {
+    const {id} = req.params;
+    const { title, description, ...rest } = req.body as TaskRequest;
+    const invalid = Object.keys(rest).length;
+    const task = await Task.findById({_id: req.params.id});
+
+    if (invalid){
+      res.status(400).send({message: 'Invalid request body'});
+    } else if (!task) {
+      res.status(400).send({message: 'Task not found'});
+    } else {
+      const update = await Task.findByIdAndUpdate(id, {title, description}, {new: true});
+      res.send(update);
+    }
+  
+  } catch (error) {
+    res.status(400).send(error);
+  }
+
 }

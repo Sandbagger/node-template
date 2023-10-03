@@ -56,4 +56,30 @@ describe('Tasks', () => {
         expect(response.body.description).toEqual('some description');
     })
   });
+
+  describe('PATCH', () => {
+    test('returns error when pass invalid attributes', async () => {
+      const task = await Task.create({title: 'existing title', description: 'existing description'})
+      const response = await request(app).patch(`/tasks/${task._id}`).send({foo: 'bar'});
+      const error = JSON.parse(response.text)
+      expect(response.status).toEqual(400);
+      expect(error.message).toEqual("Invalid request body");
+    })
+
+    test('returns error when task is not found', async () => {
+      const objectId = new mongoose.Types.ObjectId();
+      const response = await request(app).patch(`/tasks/${objectId}`).send({title: 'new title'});
+      const error = JSON.parse(response.text)
+      expect(response.status).toEqual(400);
+      expect(error.message).toEqual('Task not found');
+    });
+
+    test('task sucessfully updated', async () => {
+      const task = await Task.create({title: 'existing title', description: 'existing description'})
+      const response = await request(app).patch(`/tasks/${task._id}`).send({title: 'new title'});
+
+      expect(response.status).toEqual(200);
+      expect(response.body.title).toEqual('new title');
+    });
+  })
 });
