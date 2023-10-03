@@ -1,21 +1,38 @@
 import { Request, Response } from 'express';
 import Task, { TaskDocument } from './tasks.models.js'
 
-export function get(_: Request, res: Response): void {
-  res.send('<h1>Hello World!<h1>');
+interface TaskRequest extends Request{
+  title: string;
+  description?: string;
+}
+
+export async function get(req: Request, res: Response): Promise<void> {
+try {
+    const task = await Task.findById({_id: req.params.id});
+
+    if (!task) {
+      res.status(400).send({message: 'Task not found'});
+    
+    } else {
+      res.send(task);
+    }
+  
+  } catch (error) {
+    res.status(400).send(error);
+  }
+    
+
 }
 
 export async function post(req: Request, res: Response): Promise<void> {
   try {
-    const newTask = new Task <TaskDocument>({
-      title: req.body.title,
-      description: req.body.description,
+    const savedTask = await Task.create<TaskDocument>({
+      title: (req.body as TaskRequest).title,
+      description: (req.body as TaskRequest).description,
     });
-
-    const savedTask = await newTask.save();
 
     res.send(savedTask);
   } catch (error) {
-    res.status(500).send(error);
+    res.status(400).send(error);
   }
 }
